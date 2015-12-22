@@ -45,7 +45,6 @@
             this.save = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.CharCount = new System.Windows.Forms.TextBox();
-            this.textBoxie = new System.Windows.Forms.TextBox();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -140,6 +139,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flow1.AutoScroll = true;
+            this.flow1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flow1.Location = new System.Drawing.Point(263, 50);
             this.flow1.Name = "flow1";
             this.flow1.Size = new System.Drawing.Size(777, 425);
@@ -185,19 +185,11 @@
             this.CharCount.TabIndex = 10;
             this.CharCount.Text = "0";
             // 
-            // textBoxie
-            // 
-            this.textBoxie.Location = new System.Drawing.Point(15, 327);
-            this.textBoxie.Name = "textBoxie";
-            this.textBoxie.Size = new System.Drawing.Size(241, 22);
-            this.textBoxie.TabIndex = 11;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1052, 503);
-            this.Controls.Add(this.textBoxie);
             this.Controls.Add(this.CharCount);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.save);
@@ -240,7 +232,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox CharCount;
         public System.Windows.Forms.FlowLayoutPanel flow1;
-        private System.Windows.Forms.TextBox textBoxie;
     }
 }
 

@@ -62,8 +62,12 @@ namespace ISK_Helper
         {
             //Save all the info in a CSV file
             
+            
             //List that will contain the content for writing to the CSV file.
             List<string> characterinfo = new List<string>();
+
+            //Add the headers for the file to the list
+            characterinfo.Add("Name,Start Time,End Time,Hours Mined, Hourly Pay (millions), End Pay (millions)");
 
             //Go through all of the CharacterControls in the FlowLayoutPanel
             foreach (CharacterControl cc in flow1.Controls)
@@ -74,19 +78,35 @@ namespace ISK_Helper
                 //Add each bit of info to the charinfo list
                 charinfo.Add(cc.charName.Text);
                 charinfo.Add(cc.startTime.Text);
+                charinfo.Add(cc.endTime.Text);
+                cc.Hours();
+                charinfo.Add(cc.Hrs.ToString("#.##"));
+                charinfo.Add(cc.pay.Value.ToString());
 
-                //Join charinfo to a string then, add a new line
+                //Calculate total pay
+                double tpay;
+                double hpay = Convert.ToDouble(cc.pay.Value);
+                tpay = (cc.Hrs * hpay);
+
+                //Add total pay to list
+                charinfo.Add(tpay.ToString());
+
+                //Join charinfo to a string then
                 string cinfo = string.Join(",", charinfo);
-                string info = cinfo + " /n";
 
                 //Add the charinfo to the characterinfo list
-                characterinfo.Add(info);
+                characterinfo.Add(cinfo);
             }
 
-            //Test code to validate the foreach loop.
-            string characters = string.Join(" | ", characterinfo);
+            //Join CharacterInfo list together with each item being a new line
+            string characters = string.Join(" \n", characterinfo);
 
-            textBoxie.Text = characters;
+            //Write characters to file
+            string date = OpDate.Text.Replace("/", "");
+            System.IO.StreamWriter file = new System.IO.StreamWriter(string.Format(@"{0}\ops\op-" + OpName.Text.Replace(" ", "_") + "-" + date + ".txt", Directory.GetCurrentDirectory()));
+            file.WriteLine(characters);
+            file.Close();
+
         }
     }
 }
