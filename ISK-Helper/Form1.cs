@@ -46,7 +46,7 @@ namespace ISK_Helper
 
         //Character count to be added to each time the button is clicked
         int chars = 0;
-        private void button1_Click(object sender, EventArgs e)
+        private void addCharacter_Click(object sender, EventArgs e)
         {
             //Each time the button is pressed, add a CharacterControl to the flow panel.
             CharacterControl cc = new CharacterControl();
@@ -58,9 +58,35 @@ namespace ISK_Helper
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void save_Click(object sender, EventArgs e)
         {
             //Save all the info in a CSV file
+            
+            //List that will contain the content for writing to the CSV file.
+            List<string> characterinfo = new List<string>();
+
+            //Go through all of the CharacterControls in the FlowLayoutPanel
+            foreach (CharacterControl cc in flow1.Controls)
+            {
+                //List that contains the info from each character
+                List<string> charinfo = new List<string>();
+                
+                //Add each bit of info to the charinfo list
+                charinfo.Add(cc.charName.Text);
+                charinfo.Add(cc.startTime.Text);
+
+                //Join charinfo to a string then, add a new line
+                string cinfo = string.Join(",", charinfo);
+                string info = cinfo + " /n";
+
+                //Add the charinfo to the characterinfo list
+                characterinfo.Add(info);
+            }
+
+            //Test code to validate the foreach loop.
+            string characters = string.Join(" | ", characterinfo);
+
+            textBoxie.Text = characters;
         }
     }
 }

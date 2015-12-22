@@ -45,6 +45,7 @@
             this.save = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.CharCount = new System.Windows.Forms.TextBox();
+            this.textBoxie = new System.Windows.Forms.TextBox();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -153,7 +154,7 @@
             this.addCharacter.TabIndex = 7;
             this.addCharacter.Text = "Add Character";
             this.addCharacter.UseVisualStyleBackColor = true;
-            this.addCharacter.Click += new System.EventHandler(this.button1_Click);
+            this.addCharacter.Click += new System.EventHandler(this.addCharacter_Click);
             // 
             // save
             // 
@@ -164,7 +165,7 @@
             this.save.TabIndex = 8;
             this.save.Text = "Save";
             this.save.UseVisualStyleBackColor = true;
-            this.save.Click += new System.EventHandler(this.button2_Click);
+            this.save.Click += new System.EventHandler(this.save_Click);
             // 
             // label3
             // 
@@ -184,11 +185,19 @@
             this.CharCount.TabIndex = 10;
             this.CharCount.Text = "0";
             // 
+            // textBoxie
+            // 
+            this.textBoxie.Location = new System.Drawing.Point(15, 327);
+            this.textBoxie.Name = "textBoxie";
+            this.textBoxie.Size = new System.Drawing.Size(241, 22);
+            this.textBoxie.TabIndex = 11;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1052, 503);
+            this.Controls.Add(this.textBoxie);
             this.Controls.Add(this.CharCount);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.save);
@@ -231,6 +240,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox CharCount;
         public System.Windows.Forms.FlowLayoutPanel flow1;
+        private System.Windows.Forms.TextBox textBoxie;
     }
 }
 
