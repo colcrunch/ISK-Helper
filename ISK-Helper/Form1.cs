@@ -39,6 +39,9 @@ namespace ISK_Helper
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Open the About Form
+            Form Form2 = new Form2();
+
+            Form2.Show();
         }
 
         //Character count to be added to each time the button is clicked

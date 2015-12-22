@@ -226,11 +226,11 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker OpDate;
         private System.Windows.Forms.TextBox OpName;
-        private System.Windows.Forms.FlowLayoutPanel flow1;
         private System.Windows.Forms.Button addCharacter;
         private System.Windows.Forms.Button save;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox CharCount;
+        public System.Windows.Forms.FlowLayoutPanel flow1;
     }
 }
 
