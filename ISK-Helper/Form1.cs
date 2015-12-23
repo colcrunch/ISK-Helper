@@ -80,13 +80,15 @@ namespace ISK_Helper
                 charinfo.Add(cc.startTime.Text);
                 charinfo.Add(cc.endTime.Text);
                 cc.Hours();
-                charinfo.Add(cc.Hrs.ToString("#.##"));
+                //To avoid possible exceptions (and get rid of that pesky warning)
+                double hrs = cc.Hrs;
+                charinfo.Add(hrs.ToString("#.##"));
                 charinfo.Add(cc.pay.Value.ToString());
 
                 //Calculate total pay
                 double tpay;
                 double hpay = Convert.ToDouble(cc.pay.Value);
-                tpay = (cc.Hrs * hpay);
+                tpay = (hrs * hpay);
 
                 //Add total pay to list
                 charinfo.Add(tpay.ToString());
