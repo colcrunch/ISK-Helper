@@ -45,6 +45,8 @@
             this.save = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.CharCount = new System.Windows.Forms.TextBox();
+            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.opsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -85,7 +87,8 @@
             this.menuStrip1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutToolStripMenuItem});
+            this.aboutToolStripMenuItem,
+            this.toolsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1052, 28);
@@ -185,6 +188,22 @@
             this.CharCount.TabIndex = 10;
             this.CharCount.Text = "0";
             // 
+            // toolsToolStripMenuItem
+            // 
+            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.opsToolStripMenuItem});
+            this.toolsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(56, 24);
+            this.toolsToolStripMenuItem.Text = "Tools";
+            // 
+            // opsToolStripMenuItem
+            // 
+            this.opsToolStripMenuItem.Name = "opsToolStripMenuItem";
+            this.opsToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.opsToolStripMenuItem.Text = "Ops";
+            this.opsToolStripMenuItem.Click += new System.EventHandler(this.opsToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -232,6 +251,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox CharCount;
         public System.Windows.Forms.FlowLayoutPanel flow1;
+        private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem opsToolStripMenuItem;
     }
 }
 

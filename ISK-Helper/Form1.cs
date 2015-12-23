@@ -101,7 +101,7 @@ namespace ISK_Helper
             }
 
             //Join CharacterInfo list together with each item being a new line
-            string characters = string.Join(" \n", characterinfo);
+            string characters = string.Join("\n", characterinfo);
 
             //Write characters to file
             string date = OpDate.Text.Replace("/", "");
@@ -109,6 +109,13 @@ namespace ISK_Helper
             file.WriteLine(characters);
             file.Close();
 
+        }
+
+        private void opsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form Ops = new Ops();
+
+            Ops.Show();
         }
     }
 }
