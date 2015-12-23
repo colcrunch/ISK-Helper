@@ -67,7 +67,7 @@ namespace ISK_Helper
             List<string> characterinfo = new List<string>();
 
             //Add the headers for the file to the list
-            characterinfo.Add("Name,Start Time,End Time,Hours Mined, Hourly Pay (millions), End Pay (millions)");
+            characterinfo.Add("Name,Start Time,End Time,Hours Mined,HourlyPay(M),EndPay(M)");
 
             //Go through all of the CharacterControls in the FlowLayoutPanel
             foreach (CharacterControl cc in flow1.Controls)
