@@ -79,7 +79,6 @@ namespace ISK_Helper
                 //If any of the required fields are blank, then break the operation and throw an error to the user
                 if (string.IsNullOrWhiteSpace(cc.charName.Text) || string.IsNullOrWhiteSpace(cc.startTime.Text) || string.IsNullOrWhiteSpace(cc.endTime.Text))
                 {
-                    //MessageBox.Show("One or more boxes have been left blank!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     charinfo.Add("NULLNULLNULLNULLNULL");
                     break;
                 }
