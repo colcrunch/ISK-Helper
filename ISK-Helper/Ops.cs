@@ -19,6 +19,7 @@ namespace ISK_Helper
             InitializeComponent();
         }
 
+        //Class for use to define columns with LINQtoCsv
         class Character
         {
             [CsvColumn(FieldIndex = 0, CanBeNull = false, Name = "Name")]
