@@ -113,7 +113,7 @@ namespace ISK_Helper
                 }
             }
             //If character info contains 'NULLNULLNULLNULLNULL' break operation
-            if (charinfo.Contains("NULLNULLNULLNULLNULL"))
+            if (stop.Contains("NULLNULLNULLNULLNULL"))
             {
                 MessageBox.Show("One or more boxes have been left blank!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
