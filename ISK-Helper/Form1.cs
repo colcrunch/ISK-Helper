@@ -66,19 +66,21 @@ namespace ISK_Helper
             //List that will contain the content for writing to the CSV file.
             List<string> characterinfo = new List<string>();
 
+            //List that contains the info from each character
+            List<string> charinfo = new List<string>();
+
             //Add the headers for the file to the list
             characterinfo.Add("Name,Start Time,End Time,Hours Mined,HourlyPay(M),EndPay(M)");
 
             //Go through all of the CharacterControls in the FlowLayoutPanel
             foreach (CharacterControl cc in flow1.Controls)
             {
-                //List that contains the info from each character
-                List<string> charinfo = new List<string>();
 
                 //If any of the required fields are blank, then break the operation and throw an error to the user
                 if (string.IsNullOrWhiteSpace(cc.charName.Text) || string.IsNullOrWhiteSpace(cc.startTime.Text) || string.IsNullOrWhiteSpace(cc.endTime.Text))
                 {
-                    MessageBox.Show("Error", "One or more boxes have been left blank!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    //MessageBox.Show("One or more boxes have been left blank!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    charinfo.Add("NULLNULLNULLNULLNULL");
                     break;
                 }
                 else
@@ -109,15 +111,22 @@ namespace ISK_Helper
                     characterinfo.Add(cinfo);
                 }
             }
+            //If character info contains 'NULLNULLNULLNULLNULL' break operation
+            if (charinfo.Contains("NULLNULLNULLNULLNULL"))
+            {
+                MessageBox.Show("One or more boxes have been left blank!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                //Join CharacterInfo list together with each item being a new line
+                string characters = string.Join("\n", characterinfo);
 
-            //Join CharacterInfo list together with each item being a new line
-            string characters = string.Join("\n", characterinfo);
-
-            //Write characters to file
-            string date = OpDate.Text.Replace("/", "");
-            System.IO.StreamWriter file = new System.IO.StreamWriter(string.Format(@"{0}\ops\op-" + OpName.Text.Replace(" ", "_") + "-" + date + ".txt", Directory.GetCurrentDirectory()));
-            file.WriteLine(characters);
-            file.Close();
+                //Write characters to file
+                string date = OpDate.Text.Replace("/", "");
+                System.IO.StreamWriter file = new System.IO.StreamWriter(string.Format(@"{0}\ops\op-" + OpName.Text.Replace(" ", "_") + "-" + date + ".txt", Directory.GetCurrentDirectory()));
+                file.WriteLine(characters);
+                file.Close();
+            }
 
         }
 
@@ -127,6 +136,5 @@ namespace ISK_Helper
 
             Ops.Show();
         }
-
     }
 }
