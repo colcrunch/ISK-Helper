@@ -36,6 +36,8 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.opsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.OpDate = new System.Windows.Forms.DateTimePicker();
@@ -45,8 +47,6 @@
             this.save = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.CharCount = new System.Windows.Forms.TextBox();
-            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.opsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -102,6 +102,22 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(62, 24);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
+            // toolsToolStripMenuItem
+            // 
+            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.opsToolStripMenuItem});
+            this.toolsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(56, 24);
+            this.toolsToolStripMenuItem.Text = "Tools";
+            // 
+            // opsToolStripMenuItem
+            // 
+            this.opsToolStripMenuItem.Name = "opsToolStripMenuItem";
+            this.opsToolStripMenuItem.Size = new System.Drawing.Size(110, 26);
+            this.opsToolStripMenuItem.Text = "Ops";
+            this.opsToolStripMenuItem.Click += new System.EventHandler(this.opsToolStripMenuItem_Click);
             // 
             // label1
             // 
@@ -187,22 +203,6 @@
             this.CharCount.Size = new System.Drawing.Size(53, 22);
             this.CharCount.TabIndex = 10;
             this.CharCount.Text = "0";
-            // 
-            // toolsToolStripMenuItem
-            // 
-            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.opsToolStripMenuItem});
-            this.toolsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(56, 24);
-            this.toolsToolStripMenuItem.Text = "Tools";
-            // 
-            // opsToolStripMenuItem
-            // 
-            this.opsToolStripMenuItem.Name = "opsToolStripMenuItem";
-            this.opsToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
-            this.opsToolStripMenuItem.Text = "Ops";
-            this.opsToolStripMenuItem.Click += new System.EventHandler(this.opsToolStripMenuItem_Click);
             // 
             // Form1
             // 
