@@ -87,12 +87,6 @@ namespace ISK_Helper
                     //List that contains info from each character
                     List<string> charinfo = new List<string>();
 
-                    //Join charinfo to a string then
-                    string cinfo = string.Join(",", charinfo);
-
-                    //Add the charinfo to the characterinfo list
-                    characterinfo.Add(cinfo);
-
                     //Add each bit of info to the charinfo list
                     charinfo.Add(cc.charName.Text);
                     charinfo.Add(cc.startTime.Text);
@@ -110,6 +104,12 @@ namespace ISK_Helper
 
                     //Add total pay to list
                     charinfo.Add(tpay.ToString());
+
+                    //Join charinfo to a string then
+                    string cinfo = string.Join(",", charinfo);
+
+                    //Add the charinfo to the characterinfo list
+                    characterinfo.Add(cinfo);
                 }
             }
             //If character info contains 'NULLNULLNULLNULLNULL' break operation
