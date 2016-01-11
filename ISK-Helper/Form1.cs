@@ -74,30 +74,40 @@ namespace ISK_Helper
             {
                 //List that contains the info from each character
                 List<string> charinfo = new List<string>();
-                
-                //Add each bit of info to the charinfo list
-                charinfo.Add(cc.charName.Text);
-                charinfo.Add(cc.startTime.Text);
-                charinfo.Add(cc.endTime.Text);
-                cc.Hours();
-                //To avoid possible exceptions (and get rid of that pesky warning)
-                double hrs = cc.Hrs;
-                charinfo.Add(hrs.ToString("#.##"));
-                charinfo.Add(cc.pay.Value.ToString());
 
-                //Calculate total pay
-                double tpay;
-                double hpay = Convert.ToDouble(cc.pay.Value);
-                tpay = (hrs * hpay);
+                //If any of the required fields are blank, then break the operation and throw an error to the user
+                if (string.IsNullOrWhiteSpace(cc.charName.Text) || string.IsNullOrWhiteSpace(cc.startTime.Text) || string.IsNullOrWhiteSpace(cc.endTime.Text))
+                {
+                    MessageBox.Show("Error", "One or more boxes have been left blank!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    break;
+                }
+                else
+                {
 
-                //Add total pay to list
-                charinfo.Add(tpay.ToString());
+                    //Add each bit of info to the charinfo list
+                    charinfo.Add(cc.charName.Text);
+                    charinfo.Add(cc.startTime.Text);
+                    charinfo.Add(cc.endTime.Text);
+                    cc.Hours();
+                    //To avoid possible exceptions (and get rid of that pesky warning)
+                    double hrs = cc.Hrs;
+                    charinfo.Add(hrs.ToString("#.##"));
+                    charinfo.Add(cc.pay.Value.ToString());
 
-                //Join charinfo to a string then
-                string cinfo = string.Join(",", charinfo);
+                    //Calculate total pay
+                    double tpay;
+                    double hpay = Convert.ToDouble(cc.pay.Value);
+                    tpay = (hrs * hpay);
 
-                //Add the charinfo to the characterinfo list
-                characterinfo.Add(cinfo);
+                    //Add total pay to list
+                    charinfo.Add(tpay.ToString());
+
+                    //Join charinfo to a string then
+                    string cinfo = string.Join(",", charinfo);
+
+                    //Add the charinfo to the characterinfo list
+                    characterinfo.Add(cinfo);
+                }
             }
 
             //Join CharacterInfo list together with each item being a new line
