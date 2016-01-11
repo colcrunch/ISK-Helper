@@ -67,7 +67,7 @@ namespace ISK_Helper
             List<string> characterinfo = new List<string>();
 
             //List that contains the info from each character
-            List<string> charinfo = new List<string>();
+            List<string> stop = new List<string>();
 
             //Add the headers for the file to the list
             characterinfo.Add("Name,Start Time,End Time,Hours Mined,HourlyPay(M),EndPay(M)");
@@ -79,11 +79,19 @@ namespace ISK_Helper
                 //If any of the required fields are blank, then break the operation and throw an error to the user
                 if (string.IsNullOrWhiteSpace(cc.charName.Text) || string.IsNullOrWhiteSpace(cc.startTime.Text) || string.IsNullOrWhiteSpace(cc.endTime.Text))
                 {
-                    charinfo.Add("NULLNULLNULLNULLNULL");
+                    stop.Add("NULLNULLNULLNULLNULL");
                     break;
                 }
                 else
                 {
+                    //List that contains info from each character
+                    List<string> charinfo = new List<string>();
+
+                    //Join charinfo to a string then
+                    string cinfo = string.Join(",", charinfo);
+
+                    //Add the charinfo to the characterinfo list
+                    characterinfo.Add(cinfo);
 
                     //Add each bit of info to the charinfo list
                     charinfo.Add(cc.charName.Text);
@@ -102,12 +110,6 @@ namespace ISK_Helper
 
                     //Add total pay to list
                     charinfo.Add(tpay.ToString());
-
-                    //Join charinfo to a string then
-                    string cinfo = string.Join(",", charinfo);
-
-                    //Add the charinfo to the characterinfo list
-                    characterinfo.Add(cinfo);
                 }
             }
             //If character info contains 'NULLNULLNULLNULLNULL' break operation
@@ -117,6 +119,7 @@ namespace ISK_Helper
             }
             else
             {
+
                 //Join CharacterInfo list together with each item being a new line
                 string characters = string.Join("\n", characterinfo);
 
