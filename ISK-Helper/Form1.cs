@@ -79,7 +79,12 @@ namespace ISK_Helper
                 //If any of the required fields are blank, then break the operation and throw an error to the user
                 if (string.IsNullOrWhiteSpace(cc.charName.Text) || string.IsNullOrWhiteSpace(cc.startTime.Text) || string.IsNullOrWhiteSpace(cc.endTime.Text))
                 {
-                    stop.Add("NULLNULLNULLNULLNULL");
+                    stop.Add("ERROR CODE 1");
+                    break;
+                }
+                else if(cc.charName.Text.Contains(","))
+                {
+                    stop.Add("ERROR CODE 2");
                     break;
                 }
                 else
@@ -113,9 +118,13 @@ namespace ISK_Helper
                 }
             }
             //If character info contains 'NULLNULLNULLNULLNULL' break operation
-            if (stop.Contains("NULLNULLNULLNULLNULL"))
+            if (stop.Contains("ERROR CODE 1"))
             {
-                MessageBox.Show("One or more boxes have been left blank!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("ERROR CODE 1: One or more boxes have been left blank!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if(stop.Contains("ERROR CODE 2"))
+            {
+                MessageBox.Show("EROR CODE 2: One or more of your character names contain a comma! Please remove this before saving!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
