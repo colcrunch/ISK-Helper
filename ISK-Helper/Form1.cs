@@ -87,6 +87,11 @@ namespace ISK_Helper
                     stop.Add("ERROR CODE 2");
                     break;
                 }
+                if(chars == 0)
+                {
+                    stop.Add("ERROR CODE 3");
+                    break;
+                }
                 else
                 {
                     //List that contains info from each character
@@ -125,6 +130,10 @@ namespace ISK_Helper
             else if(stop.Contains("ERROR CODE 2"))
             {
                 MessageBox.Show("EROR CODE 2: One or more of your character names contain a comma! Please remove this before saving!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if(stop.Contains("ERROR CODE 3"))
+            {
+                MessageBox.Show("ERROR CODE 3: You can not save an empty Operation!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
