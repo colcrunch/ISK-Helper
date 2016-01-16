@@ -82,6 +82,7 @@ namespace ISK_Helper
                     stop.Add("ERROR CODE 1");
                     break;
                 }
+                //If there is a comma in the character name, break operation and throw an error
                 else if(cc.charName.Text.Contains(","))
                 {
                     stop.Add("ERROR CODE 2");
@@ -117,7 +118,7 @@ namespace ISK_Helper
                     characterinfo.Add(cinfo);
                 }
             }
-            //If character info contains 'NULLNULLNULLNULLNULL' break operation
+            //If stop contains an error code break operation
             if (stop.Contains("ERROR CODE 1"))
             {
                 MessageBox.Show("ERROR CODE 1: One or more boxes have been left blank!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
