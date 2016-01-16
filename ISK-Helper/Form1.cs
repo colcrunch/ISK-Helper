@@ -61,8 +61,8 @@ namespace ISK_Helper
         private void save_Click(object sender, EventArgs e)
         {
             //Save all the info in a CSV file
-            
-            
+
+
             //List that will contain the content for writing to the CSV file.
             List<string> characterinfo = new List<string>();
 
@@ -72,83 +72,84 @@ namespace ISK_Helper
             //Add the headers for the file to the list
             characterinfo.Add("Name,Start Time,End Time,Hours Mined,HourlyPay(M),EndPay(M)");
 
-            //Go through all of the CharacterControls in the FlowLayoutPanel
-            foreach (CharacterControl cc in flow1.Controls)
+            //If there are no CharacterControls, throw an error
+            if (chars == 0)
             {
-
-                //If any of the required fields are blank, then break the operation and throw an error to the user
-                if (string.IsNullOrWhiteSpace(cc.charName.Text) || string.IsNullOrWhiteSpace(cc.startTime.Text) || string.IsNullOrWhiteSpace(cc.endTime.Text))
-                {
-                    stop.Add("ERROR CODE 1");
-                    break;
-                }
-                //If there is a comma in the character name, break operation and throw an error
-                else if(cc.charName.Text.Contains(","))
-                {
-                    stop.Add("ERROR CODE 2");
-                    break;
-                }
-                if(chars == 0)
-                {
-                    stop.Add("ERROR CODE 3");
-                    break;
-                }
-                else
-                {
-                    //List that contains info from each character
-                    List<string> charinfo = new List<string>();
-
-                    //Add each bit of info to the charinfo list
-                    charinfo.Add(cc.charName.Text);
-                    charinfo.Add(cc.startTime.Text);
-                    charinfo.Add(cc.endTime.Text);
-                    cc.Hours();
-                    //To avoid possible exceptions (and get rid of that pesky warning)
-                    double hrs = cc.Hrs;
-                    charinfo.Add(hrs.ToString("#.##"));
-                    charinfo.Add(cc.pay.Value.ToString());
-
-                    //Calculate total pay
-                    double tpay;
-                    double hpay = Convert.ToDouble(cc.pay.Value);
-                    tpay = (hrs * hpay);
-
-                    //Add total pay to list
-                    charinfo.Add(tpay.ToString());
-
-                    //Join charinfo to a string then
-                    string cinfo = string.Join(",", charinfo);
-
-                    //Add the charinfo to the characterinfo list
-                    characterinfo.Add(cinfo);
-                }
-            }
-            //If stop contains an error code break operation
-            if (stop.Contains("ERROR CODE 1"))
-            {
-                MessageBox.Show("ERROR CODE 1: One or more boxes have been left blank!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else if(stop.Contains("ERROR CODE 2"))
-            {
-                MessageBox.Show("EROR CODE 2: One or more of your character names contain a comma! Please remove this before saving!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else if(stop.Contains("ERROR CODE 3"))
-            {
-                MessageBox.Show("ERROR CODE 3: You can not save an empty Operation!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("ERROR CODE 3: You cannot save an empty Operation file!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
 
-                //Join CharacterInfo list together with each item being a new line
-                string characters = string.Join("\n", characterinfo);
+                //Go through all of the CharacterControls in the FlowLayoutPanel
+                foreach (CharacterControl cc in flow1.Controls)
+                {
 
-                //Write characters to file
-                string date = OpDate.Text.Replace("/", "");
-                System.IO.StreamWriter file = new System.IO.StreamWriter(string.Format(@"{0}\ops\op-" + OpName.Text.Replace(" ", "_") + "-" + date + ".txt", Directory.GetCurrentDirectory()));
-                file.WriteLine(characters);
-                file.Close();
+                    //If any of the required fields are blank, then break the operation and throw an error to the user
+                    if (string.IsNullOrWhiteSpace(cc.charName.Text) || string.IsNullOrWhiteSpace(cc.startTime.Text) || string.IsNullOrWhiteSpace(cc.endTime.Text))
+                    {
+                        stop.Add("ERROR CODE 1");
+                        break;
+                    }
+                    //If there is a comma in the character name, break operation and throw an error
+                    else if (cc.charName.Text.Contains(","))
+                    {
+                        stop.Add("ERROR CODE 2");
+                        break;
+                    }
+                    else
+                    {
+                        //List that contains info from each character
+                        List<string> charinfo = new List<string>();
+
+                        //Add each bit of info to the charinfo list
+                        charinfo.Add(cc.charName.Text);
+                        charinfo.Add(cc.startTime.Text);
+                        charinfo.Add(cc.endTime.Text);
+                        cc.Hours();
+                        //To avoid possible exceptions (and get rid of that pesky warning)
+                        double hrs = cc.Hrs;
+                        charinfo.Add(hrs.ToString("#.##"));
+                        charinfo.Add(cc.pay.Value.ToString());
+
+                        //Calculate total pay
+                        double tpay;
+                        double hpay = Convert.ToDouble(cc.pay.Value);
+                        tpay = (hrs * hpay);
+
+                        //Add total pay to list
+                        charinfo.Add(tpay.ToString());
+
+                        //Join charinfo to a string then
+                        string cinfo = string.Join(",", charinfo);
+
+                        //Add the charinfo to the characterinfo list
+                        characterinfo.Add(cinfo);
+                    }
+                }
+                //If stop contains an error code break operation
+                if (stop.Contains("ERROR CODE 1"))
+                {
+                    MessageBox.Show("ERROR CODE 1: One or more boxes have been left blank!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else if (stop.Contains("ERROR CODE 2"))
+                {
+                    MessageBox.Show("EROR CODE 2: One or more of your character names contain a comma! Please remove this before saving!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+
+                    //Join CharacterInfo list together with each item being a new line
+                    string characters = string.Join("\n", characterinfo);
+
+                    //Write characters to file
+                    string date = OpDate.Text.Replace("/", "");
+
+                    System.IO.StreamWriter file = new System.IO.StreamWriter(string.Format(@"{0}\ops\op-" + OpName.Text.Replace(" ", "_") + "-" + date + ".txt", Directory.GetCurrentDirectory()));
+                    file.WriteLine(characters);
+                    file.Close();
+                }
+
             }
-
         }
 
         private void opsToolStripMenuItem_Click(object sender, EventArgs e)
